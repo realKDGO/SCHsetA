@@ -4,29 +4,40 @@
 #include<stdlib.h>
 #include<ctype.h>
 #include<string.h>
+#include<time.h>
+void menu() {
+  clrscr();
+  printf("\n|======CHOOSE PROBLEM======|\n");
+  printf("|1. Problem 1              |\n");
+  printf("|2. Problem 2              |\n");
+  printf("|3. Problem 3              |\n");
+  printf("|4. Exit                   |\n");
+  printf("|==========================|\n");
+  printf("Choose a problem: ");
+}
 //Problem 1.
-int main() {
+void prob1() {
  char gender;
  clrscr();
 
+
   printf("Enter your gender: ");
-  scanf("%c",&gender);
+  gender=getche();
   gender=toupper(gender);
 
   if(gender == 'M') {
-   printf("Welcome, sir!");
+   printf("\nWelcome, sir!");
 } else if(gender == 'F') {
-   printf("Welcome, madam!");
+   printf("\nWelcome, madam!");
 } else {
-   printf("Error");
+   printf("\nError");
 }
 
   getch();
-  return 0;
 }
 
 //Problem 2.
-/* int main() {
+void prob2() {
   char name[20];
   float price,disc,finprc;
   clrscr();
@@ -43,18 +54,17 @@ int main() {
 
   //Performing the calculations for final price.
   if(disc >= 100) {
-   printf("Error: Invalid discount percentage");
+   printf("\nError: Invalid discount percentage");
 } else {
    finprc=price-(price*(disc/100));
-   printf("%s, the final price is: %.2f",name,finprc);
+   printf("\n%s, the final price is: %.2f",name,finprc);
 }
 
   getch();
-  return 0;
-}*/
+}
 
 //Problem 3.
-/* int main() {
+void prob3() {
   int num,tens,units,sum,product;
   clrscr();
 
@@ -68,11 +78,42 @@ int main() {
   product = tens * units;
 
   if(sum > product) {
-   printf("I have control of myself.");
+   printf("\nI have control of myself.");
 } else {
-   printf("I lost to myself");
+   printf("\nI lost to myself");
 }
 
  getch();
+}
+
+int main() {
+ int option;
+ clrscr();
+
+ do{
+  menu();
+  scanf("%d",&option);
+
+  switch(option) {
+   case 1:
+    prob1();
+    break;
+   case 2:
+    prob2();
+    break;
+   case 3:
+    prob3();
+    break;
+   case 4:
+    printf("Thank You! Goodbye.");
+    sleep(2);
+    printf("\nProgram Exiting...");
+    sleep(1);
+    break;
+   default:
+    printf("Error: Invalid Option!");
+  }
+} while(option != 4);
+
  return 0;
-}*/
+}
