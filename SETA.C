@@ -6,7 +6,7 @@
 #include<string.h>
 #include<time.h>
 void menu() {
-  clrscr();
+  //clrscr();
   printf("\n|======CHOOSE PROBLEM======|\n");
   printf("|1. Problem 1              |\n");
   printf("|2. Problem 2              |\n");
@@ -85,6 +85,11 @@ void prob3() {
 
  getch();
 }
+//Start of Error Trapping.
+void clrIB() {
+ char ch;
+ while((ch == getchar()) != '\n' && ch != EOF);
+}
 
 int main() {
  int option;
@@ -92,7 +97,13 @@ int main() {
 
  do{
   menu();
-  scanf("%d",&option);
+  if(scanf("%d",&option) != 1) {
+  clrscr();
+  printf("Error: Invalid Input! Letters, Strings, & Special Characters Are Not Allowed.\n");
+  clrIB();
+  continue;
+  //End of Error Trapping.
+}
 
   switch(option) {
    case 1:
@@ -111,7 +122,8 @@ int main() {
     sleep(1);
     break;
    default:
-    printf("Error: Invalid Option!");
+    clrscr();
+    printf("Error: Invalid Option! Please Choose Between (1, 2, 3, & 4)\n");
   }
 } while(option != 4);
 
